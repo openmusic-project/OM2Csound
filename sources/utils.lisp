@@ -3,8 +3,6 @@
 ;;; OM2Csound
 ;;; Control of Csound sound synthesis from OpenMusic
 ;;;
-;;; see www.csounds.com
-;;;
 ;;; UTILITIES
 ;;; Authors/Contributors: Laurent Pottier, Karim Haddad, Jean Bresson 
 ;;; (c) IRCAM 1993-2010

@@ -1,7 +1,6 @@
 ;;;===================================================
 ;;; OM2Csound
 ;;; Control of Csound sound synthesis from OpenMusic
-;;; www.csounds.com
 ;;;
 ;;; CSOUND Normalize module
 ;;; J. Bresson, K. Haddad, M. Stroppa IRCAM 2010

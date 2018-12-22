@@ -3,6 +3,7 @@
 ;;; Control of Csound sound synthesis from OpenMusic
 ;;;
 ;;; ORCHESTRA EDITOR WINDOW
+;;; C. Agon, K. Haddad, Ircam
 ;;;===================================================
 
 (in-package :om)
