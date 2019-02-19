@@ -32,13 +32,13 @@
            
         (om-cmd-line 
          (format nil "~s ~A ~s ~s ~A" 
-                        (namestring *CSOUND-PATH*)
-                        *csound-defflags*
-                        (namestring orc)
-                        (namestring sco)
-                        (if rt-out "-odac"
-                          (format nil "-o ~s" (namestring csout)))
-                        )
+                 (namestring *CSOUND-PATH*)
+                 *csound-defflags*
+                 (namestring orc)
+                 (namestring sco)
+                 (if rt-out "-odac"
+                   (format nil "-o ~s" (namestring csout)))
+                 )
          *sys-console*)
         
         (if (and (not rt-out) (null (probe-file csout)))
@@ -86,5 +86,3 @@
        (om-buffer-write-file (buffer-text self) path :if-exists :supersede))
          (push path *tmpparfiles*)
          path))
-
-
