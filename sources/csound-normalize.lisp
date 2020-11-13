@@ -18,12 +18,10 @@
    (let ((snd (load-sound-file file)))
      (when snd 
        (csound-normalize snd outfile gain resolution)))))
-            
-(defmethod! csound-normalize ((file pathname) &optional outfile gain resolution)
- (when (probe-file file)
-   (let ((snd (load-sound-file (pathname file))))
-     (when snd 
-       (csound-normalize snd outfile gain resolution)))))
+
+
+(defmethod! csound-normalize ((file string) &optional outfile gain resolution)
+  (csound-normalize (pathname file) outfile gain resolution))
 
 
 (defmethod! csound-normalize ((snd sound) &optional outfile gain resolution)
