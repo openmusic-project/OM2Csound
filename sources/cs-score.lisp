@@ -292,7 +292,7 @@ All arguments can be numbers or lists (with the same number of elements).
                    (cond ((equal out 'no-file) nil)
                          ((pathnamep out) out)
                          ((stringp out) (tmpfile out :type "sco"))
-                         (t (om-choose-new-file-dialog :directory (or *lastcsdfile* *om-tmpfiles-folder*)
+                         (t (om-choose-new-file-dialog :directory (or *lastcsdfile* (om::tmpfile nil))
                                                        :prompt "Save csound score..." :types '("Csound score Files" "*.sco")))))))
     (if filename
         (progn 

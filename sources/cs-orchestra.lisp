@@ -820,7 +820,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                    (cond ((equal out 'no-file) nil)
                          ((pathnamep out) out)
                          ((stringp out) (tmpfile out :type "orc"))
-                         (t (om-choose-new-file-dialog :directory (or *lastcsdfile* *om-tmpfiles-folder*)
+                         (t (om-choose-new-file-dialog :directory (or *lastcsdfile* (om::tmpfile nil))
                                                        :prompt "Save csound ORC..." :types '("Csound ORC Files" "*.orc")))))))
     (if  filename
       (progn
