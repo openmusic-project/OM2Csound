@@ -90,9 +90,9 @@
     (let (ligne)
       (if (zerop n)
         ()
-        (repeat (1- n) 
+        (dotimes (i (1- n)) 
           (read-line test nil nil)))
-        (setf ligne (read-line test nil nil)) ligne)))
+      (setf ligne (read-line test nil nil)) ligne)))
 
 
 (defun write-ds-file (LdeL-de-texte nom-fichier)
