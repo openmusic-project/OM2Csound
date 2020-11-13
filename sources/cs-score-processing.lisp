@@ -189,7 +189,7 @@ de la ligne ligne1 a la ligne ligneend"
   :initvals '(nil nil * 1 1 1 1)
   :doc  "Apply <op> with <val> on every <col>th column between lines <lb> and <le> in <file>."
   (if (and file (not (probe-file file)))
-      (om-beep-msg (string+ "ERROR!! File not found : " (namestring filename)))
+      (om-beep-msg (string+ "ERROR!! File not found : " (namestring file)))
     (let* ((inf (or file (om-choose-file-dialog :button-string "Choose a file to process")))
            (outf (and inf (or newfile (om-choose-new-file-dialog :button-string "Choose name and destination for the new file")))))
       (when (and inf outf)
