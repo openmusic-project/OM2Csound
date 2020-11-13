@@ -67,8 +67,9 @@ GEN03 is a polynomial evaluated in x over a fixed interval and with specified co
 
   (om::flat (list xmin xmax coeffs)))
 
+
 (defmethod om-scale/max ((list list) (max number))
-  :doc "scales <list> (may be tree) so that its max becomes <max>. Trees must be well-formed: The children of a node must be either all leaves or all nonleaves. " 
+  "scales <list> (may be tree) so that its max becomes <max>. Trees must be well-formed: The children of a node must be either all leaves or all nonleaves." 
   (om::less-tree-mapcar #'(lambda (x y) (om::om* x (/ y (list-max x)))) list max t))
 
 
