@@ -30,7 +30,7 @@
   (interpolation init end steps 0))        
 
 (defun rang? (liste elem &optional (pred 'eq )) 
-  (rang-p list elem pred))
+  (rang-p liste elem pred))
 
 
 
