@@ -17,6 +17,7 @@
   :icon '(213)
   (multiple-value-bind (lbpf lx ly)
       (bpf-interpol bpf1 bpf2 n curve nil 'sample)
+    (declare (ignore lbpf))
     (values (car lx) ly)))
 
 (defmethod! bpf-intpol (bpf1 bpf2 n curve)
