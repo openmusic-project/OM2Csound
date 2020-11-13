@@ -99,8 +99,9 @@
     (if (not (>= time (car times)))
        (car times)
        (progn 
-           (while (and times (>= time (car times))) 
-           (setq last-time (pop times)) (setq last-value (pop values)))
+           (loop while (and times (>= time (car times))) 
+                 do (setf last-time (pop times)
+                          last-value (pop values)))
            (setq res
              (if (not times)
                last-value

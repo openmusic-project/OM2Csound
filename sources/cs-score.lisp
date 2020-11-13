@@ -257,8 +257,10 @@ All arguments can be numbers or lists (with the same number of elements).
 (defun printscoseq (seq dest)
   (if (atom seq)
       (print-seq-aux seq dest)
-    (while seq
-      (print-seq-aux (pop seq) dest))))
+    (loop while seq 
+          do (print-seq-aux (pop seq) dest))
+    ))
+
 
 (defvar *lastcsdfile* nil)
 
@@ -326,10 +328,4 @@ All arguments can be numbers or lists (with the same number of elements).
   :icon 135
   :doc "DEPRECATED: use WRITE-SCOUND-SCORE"
   (write-csound-score name data))
-
-
-
-
-
-
 

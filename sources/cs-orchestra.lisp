@@ -775,8 +775,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 ;;;==================================
 
 (defun flat-max-1-orc (l)
-  (while (listp (caar l))
-    (setf l  (om::flat-once l))) l)
+  (loop while (listp (caar l))
+        do (setf l  (om::flat-once l))) l)
 
 (defun print-seq-aux-orc (seq dest)
   (cond ((equal 'i seq)
@@ -789,10 +789,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
          (format dest "~D" seq))))
 
 (defun printorcseq (seq dest)
-    (if (atom seq)
-        (print-seq-aux-orc seq dest)
-      (while seq
-        (print-seq-aux-orc (pop seq) dest))))
+  (if (atom seq)
+      (print-seq-aux-orc seq dest)
+    (loop while seq
+          do (print-seq-aux-orc (pop seq) dest))
+    ))
 
 ;;;==================================
 ;;; New box OM2Csound 2.0 (2010)
