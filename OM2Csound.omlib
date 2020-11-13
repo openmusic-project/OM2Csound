@@ -1,0 +1,63 @@
+;===================================================
+; OM2Csound
+; Control of Csound sound synthesis from OpenMusic
+;
+; see www.csounds.com
+;
+; LIBRARY MAIN FILE
+; Authors/Contributors: Laurent Pottier, Karim Haddad,
+; Mikhail Malt, Carlos Agon, Jean Bresson 
+; (c) IRCAM 1993-2020
+;===================================================
+; 
+; Loader file for om#
+;
+;===================================================
+
+(in-package :om)
+
+
+(:om-lib 
+ (:version 2.4)
+ (:doc "OM2Csound library")
+ (:author "Laurent Pottier, Karim Haddad, Mikhail Malt, Carlos Agon, Jean Bresson, IRCAM 1998-2020")
+ (:source-files 
+  "sources/cs-score-processing" 
+  "sources/cs-score" 
+  ;"sources/cs-orchestra"  
+  ;"sources/orc-editor" 
+  "sources/utils" 
+  ;"sources/csound-synth"
+  ;"sources/csound-normalize"
+  ;"sources/csound-preferences"
+  )
+ (:symbols
+  (:packages 
+   (:package 
+    (:name "ftable")
+    (:functions "sampler" "pargen03" "pargen05-07" "pargen09" "pargen15" ))
+   (:package 
+    (:name "score")
+    (:functions "table" "i-statements" "make-obj-snd" "write-csound-score" "change-col-in-file"))
+  ; (:package 
+  ;  (:name "instts")
+  ;  (:functions "inst" "out" "assign-val"))
+  ; (:package 
+  ;  (:name "converters")
+  ;  (:functions "convert-pitch" "convert-val"))
+  ; (:package 
+  ;  (:name "operators")
+  ;  (:functions "plus" "minus" "multiply" "divide"))
+  ; (:package 
+  ;  (:name "write")
+  ;  (:functions "write-csound-orc" "header"))
+  ; (:package 
+  ;  (:name "Synthesize")
+  ;  (:functions "csound-synth" "csound-normalize"))
+  ; (:package 
+  ;  (:name "opcodes")
+  ;  (:functions "oscil" "line-seg" "linen" "phasor"))
+   ))
+ )
+
+
