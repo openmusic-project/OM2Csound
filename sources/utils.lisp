@@ -82,7 +82,7 @@
 
 (defmethod get-bpf-sample-output ((self bpf) echan1 xinit2 xend3 fact4 nbdec5)
   (om::om-round 
-   (om::om* (transfer self (om::arithm-ser xinit2 xend3 (/ (- xend3 xinit2) (- echan1 '1)))) fact4) nbdec5))
+   (om::om* (y-transfer self (om::arithm-ser xinit2 xend3 (/ (- xend3 xinit2) (- echan1 '1)))) fact4) nbdec5))
 
 (defmethod get-bpf-sample-output ((self cons) echan1 xinit2 xend3 fact4 nbdec5)
   (mapcar #'(lambda (bpf) (get-bpf-sample-output bpf echan1 xinit2 xend3 fact4 nbdec5))
