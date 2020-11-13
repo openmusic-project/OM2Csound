@@ -4,7 +4,7 @@
 ;;; Control of Csound sound synthesis from OpenMusic
 ;;;
 ;;; UTILITIES
-;;; Authors/Contributors: Laurent Pottier, Karim Haddad, Jean Bresson 
+;;; Authors/Contributors: Laurent Pottier, Karim Haddad, Jean Bresson
 ;;; (c) IRCAM 1993-2010
 ;;;===================================================
 
@@ -27,9 +27,9 @@
   (interpolation l1 l2 n curve nil))
 
 (defmethod! lin-list (init end steps)
-  (interpolation init end steps 0))        
+  (interpolation init end steps 0))
 
-(defun rang? (liste elem &optional (pred 'eq )) 
+(defun rang? (liste elem &optional (pred 'eq ))
   (rang-p liste elem pred))
 
 
@@ -38,17 +38,17 @@
 ;;; BPF SAMPLER
 
 (defmethod! sampler ((bpf bpf)
-                          (mode symbol)
-                          (nsamp number)
-                          xinit
-                          xend
-                          (oper number)
-                          (ndec number))
+                     (mode symbol)
+                     (nsamp number)
+                     xinit
+                     xend
+                     (oper number)
+                     (ndec number))
   :icon 139
   :indoc '("bpf" "mode" "nsamp" "xmin" "xmax" "oper" "ndec")
   :initvals (list (make-instance 'bpf) 'fact 1 nil nil 1 0)
-  :menuins '((1 (("fact" 'fact) 
-                 ("max" 'max) 
+  :menuins '((1 (("fact" 'fact)
+                 ("max" 'max)
                  ("sum" 'sum))))
   :doc "A bpf sampler
 
@@ -64,9 +64,9 @@
       max   mode = samples a bpf between O and  maximum value <oper> of the ordinates
       sum   mode = samples a bpf with a fixed sum of values,
                    <oper> being the maximum value for the sum of the ordinates
-" 
+"
   (let* ((sampled-values (third (multiple-value-list (om-sample bpf nsamp xinit xend ndec)))))
-    (cond 
+    (cond
      ((eq mode 'xfact) (om::om-round (om::om* sampled-values oper) ndec))
      ((eq mode 'max) (om::om-round (om-scale/max sampled-values oper) ndec))
      ((eq mode 'sum) (om::om-round (om::om-scale/sum sampled-values oper) ndec)))))
@@ -81,7 +81,7 @@
 
 
 (defmethod get-bpf-sample-output ((self bpf) echan1 xinit2 xend3 fact4 nbdec5)
-  (om::om-round 
+  (om::om-round
    (om::om* (y-transfer self (om::arithm-ser xinit2 xend3 (/ (- xend3 xinit2) (- echan1 '1)))) fact4) nbdec5))
 
 (defmethod get-bpf-sample-output ((self cons) echan1 xinit2 xend3 fact4 nbdec5)
@@ -98,15 +98,15 @@
         res)
     (unless times (setq times (om::x-points bpf)))
     (if (not (>= time (car times)))
-       (car times)
-       (progn 
-           (loop while (and times (>= time (car times))) 
-                 do (setf last-time (pop times)
-                          last-value (pop values)))
-           (setq res
-             (if (not times)
-               last-value
-               (linear-interpol last-time (car times) last-value (car values) time)))
-          (if (not float-fl) (round res) res)))))
+        (car times)
+      (progn
+        (loop while (and times (>= time (car times)))
+              do (setf last-time (pop times)
+                       last-value (pop values)))
+        (setq res
+              (if (not times)
+                  last-value
+                (linear-interpol last-time (car times) last-value (car values) time)))
+        (if (not float-fl) (round res) res)))))
 
 

@@ -9,7 +9,7 @@
 (in-package :om)
 
 (defun codes->strg (liste-de-codes)
-  (coerce 
+  (coerce
    (let ((Lint()))
      (dolist (n liste-de-codes (reverse Lint))
        (push (code-char (+ n 48)) Lint)))
@@ -40,7 +40,7 @@
 
 
 (defun numberp-liste (liste)
-"donne t si la liste ne comporte que des valeurs entre -3 et 9, nil sinon"
+  "donne t si la liste ne comporte que des valeurs entre -3 et 9, nil sinon"
   (eval  (cons 'and (mapcar #'(lambda (elt) (and (not (= -1 elt)) (< -4 elt 10))) liste))))
 
 ;*********************************************************
@@ -48,16 +48,16 @@
   (let ((Li (regroupe-elts result))(Lf ()))
     (dolist (x Li (reverse Lf))
       (push (if (numberp-liste x) (base10 x)
-                (codes->strg x)) Lf))))
+              (codes->strg x)) Lf))))
 
 (defun base10 (liste)
-"transforme une liste de codes de char en un nombre; a une soustraction -48 pres  "
+  "transforme une liste de codes de char en un nombre; a une soustraction -48 pres  "
   (let ((number 0)(signe 1)(exptmx (expt-max  liste)))
     (if (= -3 (car liste))
-      (setf signe -1)())
+        (setf signe -1)())
     (setf liste (remove -3 (remove -2 liste)))
     (dotimes (n (length liste) (if (ratiop (* signe number))
-                                 (float (* signe number))
+                                   (float (* signe number))
                                  (* signe number)))
       (setf number (+ number (* (expt 10 (- exptmx n)) (nth n liste)))))))
 
@@ -71,7 +71,7 @@
         (setf n3 0))
        ((and n1 (not n3) (< -1 (nth x liste) 10))
         (setf n2 x))
-       (t 
+       (t
         ())))))
 
 ;*********************************************************
@@ -89,8 +89,8 @@
                         :if-does-not-exist nil)
     (let (ligne)
       (if (zerop n)
-        ()
-        (dotimes (i (1- n)) 
+          ()
+        (dotimes (i (1- n))
           (read-line test nil nil)))
       (setf ligne (read-line test nil nil)) ligne)))
 
@@ -100,7 +100,7 @@
                           :direction :output
                           :if-exists :append
                           :if-does-not-exist :create)
-    
+
     (cond ((endp LdeL-de-texte)
            ())
           ((atom LdeL-de-texte)
@@ -108,20 +108,20 @@
           (t
            (dolist (mot LdeL-de-texte)
              (format stream "~A~A" mot #\tab))))
-          (format stream "~%")) LdeL-de-texte)
+    (format stream "~%")) LdeL-de-texte)
 
 (defun write-ds-file2 (LdeL-de-texte nom-fichier)
   (with-open-file (stream nom-fichier
                           :direction :output
                           :if-exists :append
                           :if-does-not-exist :create)
-    
+
     (format stream "~a~%" LdeL-de-texte)))
 
 
 ;*************************************************************************
 (defun scal-spec (occurences liste scaler)
-"multiplie les elts de liste - indiquees par les indices donnes par la liste 
+  "multiplie les elts de liste - indiquees par les indices donnes par la liste
 occurence - par scaler"
   (dolist (n occurences liste)
     (setf (nth n liste)(* scaler (nth n liste)))))
@@ -129,37 +129,37 @@ occurence - par scaler"
 
 ;*************************************************************************
 (defun rescal (nom-fich1 nom-fich2 ligne1 ligneend scaler occurences)
-  "multiplie les elts de nom-fich1 - dont les indices de colonnes sont indiques 
+  "multiplie les elts de nom-fich1 - dont les indices de colonnes sont indiques
 par la liste occurence - par scaler"
   (if (zerop ligne1) () (resum-file nom-fich1 nom-fich2 0 (1- ligne1)))
   (setf ligne1 (1+ ligne1) ligneend (1+ ligneend))
   (dotimes (x (- (1+ ligneend) ligne1) )
-    (write-ds-file 
+    (write-ds-file
      (scal-spec scaler occurences
-                (string-to-liste 
+                (string-to-liste
                  (lire-line-n nom-fich1 (+ x ligne1))) )
      nom-fich2))
   (if (equal ligneend 'EOF) () (resum-file nom-fich1 nom-fich2 (1+ ligneend) 'EOF)))
 
 ;*************************************************************************
 (defun resum-file (nom-fich1 nom-fich2 ligne1 ligneend)
-"pour la reecriture d'une partie d'un fichier,
+  "pour la reecriture d'une partie d'un fichier,
 de la ligne ligne1 a la ligne ligneend"
   (let ((ligne t))
     (setf ligne1 (1+ ligne1) ligneend (1+ ligneend))
     (dotimes (x   (- (1+ ligneend) ligne1))
-      (write-ds-file  
-       (if ligne 
-         (string-to-liste 
-          (setf ligne (lire-line-n nom-fich1 (+ x ligne1))
-                )))
+      (write-ds-file
+       (if ligne
+           (string-to-liste
+            (setf ligne (lire-line-n nom-fich1 (+ x ligne1))
+                  )))
        nom-fich2)) ligne))
 
 
 ;************************ chge colonne ****************************
 (defun chge-val (op scal col L)
-(if (and L (numberp (nth col L)))
-    (setf (nth col L)(funcall op scal (nth col L)))) L)
+  (if (and L (numberp (nth col L)))
+      (setf (nth col L)(funcall op scal (nth col L)))) L)
 
 (defun chge-col (scorefile outfile op scal col lig-i lig-f)
   (let ((wnf (concatenate 'string (namestring scorefile) "temp")) (c 0))
@@ -169,12 +169,12 @@ de la ligne ligne1 a la ligne ligneend"
                      (write-ds-file (chge-val op scal col (string-to-liste (lire-line-n wnf (+ 1 c lig-i)))) outfile))
           do (incf c))
     (loop while (resum-file wnf outfile (+ c lig-i)(+ c lig-i))
-          do (incf c)) 
+          do (incf c))
     (delete-file wnf)
     outfile))
 
 
-(om::defmethod! change-col ((op symbol) (val number) col (lb number) (le number))  
+(om::defmethod! change-col ((op symbol) (val number) col (lb number) (le number))
   :icon 149
   (change-col-in-file nil nil op val col lb le))
 
@@ -183,7 +183,7 @@ de la ligne ligne1 a la ligne ligneend"
 ; New box OM2Csound 2.0 (2010)
 ;===============================
 
-(om::defmethod! change-col-in-file (file newfile (op  symbol) (val number) col (lb number) (le number))  
+(om::defmethod! change-col-in-file (file newfile (op  symbol) (val number) col (lb number) (le number))
   :icon 149
   :indoc '("a file pathname" "output file pathname" "a function or function name" "value to apply with <op>" "column number" "begin line number" "ending line number")
   :initvals '(nil nil * 1 1 1 1)
@@ -225,6 +225,6 @@ de la ligne ligne1 a la ligne ligneend"
         (setf n3 0))
        ((and n1 (not n3) (< -1 (nth x liste) 10))
         (setf n2 x))
-       (t 
+       (t
         ())))))
 |#
