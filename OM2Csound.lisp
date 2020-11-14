@@ -53,10 +53,10 @@ Csound can also be selected as a sound normalizer in OM sound processing (see Pr
 
 ; (gen-lib-reference (find-library "OM2Csound"))
 
-(unless (fboundp 'om::set-lib-release) (defmethod om::set-lib-release (version &optional lib) nil))
 
-;;; 2.3: minor fix compat w/ OM-Tristan (om-scale/max)
-(set-lib-release 2.3) 
+(when (fboundp 'om::set-lib-release) 
+  (set-lib-release 2.4))
+
 
 (print "
 ;;;===================================================
