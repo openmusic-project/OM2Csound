@@ -59,13 +59,11 @@ Csound can also be selected as a sound normalizer in OM sound processing (see Pr
 
 
 (print "
-;;;===================================================
-;;;
-;;; OM2Csound
-;;; Control of Csound in OpenMusic
-;;; see www.csounds.com
-;;; L. Pottier, K. Haddad, M. Malt, C. Agon, J. Bresson
-;;; IRCAM 1993-2010
-;;;
-;;;===================================================
+=======================================
+ OM2Csound
+ Control of Csound in OpenMusic
+ see www.csounds.com
+ L. Pottier, K. Haddad, M. Malt, C. Agon, J. Bresson
+ IRCAM 1993-2020
+=======================================
 ")
