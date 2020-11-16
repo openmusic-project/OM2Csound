@@ -1,0 +1,325 @@
+
+(:patch
+ (:name "01-csound-synth")
+ (:doc "")
+ (:info
+  (:created "2020/11/16 8:22:03")
+  (:modified "2020/11/16 23:00:25")
+  (:by "om-sharp")
+  (:version 1.01))
+ (:window (:size (802 571)) (:position (610 130)))
+ (:grid nil)
+ (:lock nil)
+ (:boxes
+  (:comment
+   (:x 417)
+   (:y 382)
+   (:w 327)
+   (:h 83)
+   (:fgcolor (:color 0 0 0 1.0))
+   (:bgcolor nil)
+   (:border 0)
+   (:roundness nil)
+   (:text-font (:font (:face "Verdana") (:size 12) (:style :plain)))
+   (:align nil)
+   (:text
+    "Connect to CSOUND-SYNTH:
+
+- pathnames to ORCHESTRA and SCORE files
+- TEXTFILEs containing Csound code
+- Csound score/orchestra text line lists")
+   (:id 0))
+  (:comment
+   (:x 78)
+   (:y 29)
+   (:w 187)
+   (:h 30)
+   (:fgcolor (:color 6/85 14/85 106/255 1.0))
+   (:bgcolor nil)
+   (:border 0)
+   (:roundness nil)
+   (:text-font (:font (:face "Verdana") (:size 18) (:style :bold)))
+   (:align nil)
+   (:text "Csound Synthesis")
+   (:id 1))
+  (:comment
+   (:x 261)
+   (:y 110)
+   (:w 52)
+   (:h 21)
+   (:fgcolor (:color 0 0 0 1.0))
+   (:bgcolor nil)
+   (:border 0)
+   (:roundness nil)
+   (:text-font (:font (:face "Verdana") (:size 11) (:style :bold)))
+   (:align nil)
+   (:text "SCORE")
+   (:id 2))
+  (:comment
+   (:x 34)
+   (:y 111)
+   (:w 86)
+   (:h 21)
+   (:fgcolor (:color 0 0 0 1.0))
+   (:bgcolor nil)
+   (:border 0)
+   (:roundness nil)
+   (:text-font (:font (:face "Verdana") (:size 11) (:style :bold)))
+   (:align nil)
+   (:text "ORCHESTRA")
+   (:id 3))
+  (:box
+   (:type :object)
+   (:reference textbuffer)
+   (:group-id nil)
+   (:name "textfile")
+   (:x 258)
+   (:y 132)
+   (:w 269)
+   (:h 135)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:lock :locked)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "CONTENTS")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :key)
+     (:name "output-mode")
+     (:value :text-list)
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "CONTENTS") (:reactive nil))
+    (:output (:name "output-mode") (:reactive nil)))
+   (:window (:size (979 329)) (:position (140 115)))
+   (:edition-params (:output-mode :text-list))
+   (:value
+    (:object
+     (:class textbuffer)
+     (:slots
+      ((:contents
+        (:list
+         " f  1	  0	  4096	  10	  1	 "
+         " f  2	  0	  2048	  7	  .0450	  205	  .3130	  205	  .7460	  204	  1.0000	  205	  .8060	  205	  .3130	  205	  .2540	  205	  .3730	  204	  .1040	  410	  .0000	 "
+         ";p1	p2	p3	p4	p5	p6	"
+         " i  1	  0	  1	  10000	  440	  .5000	 "
+         " i  1	  0	  1	  10000	  380	  .5000	 "
+         " i  1	  .2000	  1	  10000	  440	  0	 "
+         " i  1	  1.4000	  1	  10000	  680	  1"
+         "e"
+         ""
+         ""))))
+     (:add-slots ((:input-mode :lines-cols)))))
+   (:id 4))
+  (:box
+   (:type :object)
+   (:reference textbuffer)
+   (:group-id nil)
+   (:name "textfile")
+   (:x 39)
+   (:y 131)
+   (:w 209)
+   (:h 157)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:lock :locked)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "CONTENTS")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :key)
+     (:name "output-mode")
+     (:value :text-list)
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "CONTENTS") (:reactive nil))
+    (:output (:name "output-mode") (:reactive nil)))
+   (:window (:size (336 229)) (:position (224 207)))
+   (:edition-params (:output-mode :text-list))
+   (:value
+    (:object
+     (:class textbuffer)
+     (:slots
+      ((:contents
+        (:list
+         "sr= 44100 "
+         "kr= 4410 "
+         "ksmps=  10 "
+         "nchnls= 2"
+         " "
+         "instr 1 "
+         "k1  oscil1  0	,1	,p3,2	"
+         "asig  oscili  p4,p5,1	"
+         "     outs  asig*k1*p6,asig*k1*(1-p6)"
+         "    endin"
+         ""
+         ""
+         ""))))
+     (:add-slots ((:input-mode :lines-cols)))))
+   (:id 5))
+  (:comment
+   (:x 326)
+   (:y 29)
+   (:w 267)
+   (:h 38)
+   (:fgcolor (:color 0.61085976 0.26018286 0.18046659 1.0))
+   (:bgcolor nil)
+   (:border 0)
+   (:roundness nil)
+   (:text-font (:font (:face "Verdana") (:size 12) (:style :bold)))
+   (:align nil)
+   (:text
+    "!!! First install Csound and check Csound path in Preferences")
+   (:id 6))
+  (:comment
+   (:x 348)
+   (:y 284)
+   (:w 149)
+   (:h 23)
+   (:fgcolor (:color 0 0 0 1.0))
+   (:bgcolor nil)
+   (:border 0)
+   (:roundness nil)
+   (:text-font (:font (:face "Verdana") (:size 12) (:style :plain)))
+   (:align nil)
+   (:text "output sound file name")
+   (:id 7))
+  (:box
+   (:type :value)
+   (:reference (:symbol "SIMPLE-TEXT-STRING" "LISPWORKS"))
+   (:group-id nil)
+   (:name "aux")
+   (:x 341)
+   (:y 307)
+   (:w 109)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value "csound-synth.aif")
+   (:id 8))
+  (:box
+   (:type :object)
+   (:reference sound)
+   (:group-id nil)
+   (:name "csound-simple")
+   (:x 83)
+   (:y 410)
+   (:w 293)
+   (:h 92)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value :choose-file)
+     (:reactive nil))
+    (:input
+     (:type :key)
+     (:name "markers")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "markers") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params)
+   (:value
+    (:object
+     (:class sound)
+     (:slots
+      ((:onset 0)
+       (:duration 0)
+       (:n-samples nil)
+       (:n-channels nil)
+       (:sample-rate nil)
+       (:smpl-type :float)
+       (:sample-size 16)))
+     (:add-slots
+      ((:markers nil)
+       (:gain 1.0)
+       (:access-from-file nil)
+       (:file-pathname nil)))))
+   (:id 9))
+  (:box
+   (:library "csound")
+   (:type :function)
+   (:reference csound-synth)
+   (:group-id nil)
+   (:name "csound-synth")
+   (:x 225)
+   (:y 346)
+   (:w 112)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "ORC")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "SCO")
+     (:value nil)
+     (:reactive nil))
+    (:input (:type :key) (:name "out") (:value nil) (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 10)))
+ (:connections
+  (:connection (:from (:box 4 :out 0)) (:to (:box 10 :in 1)))
+  (:connection (:from (:box 5 :out 0)) (:to (:box 10 :in 0)))
+  (:connection (:from (:box 8 :out 0)) (:to (:box 10 :in 2)))
+  (:connection (:from (:box 10 :out 0)) (:to (:box 9 :in 0)))))
