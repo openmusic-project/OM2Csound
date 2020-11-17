@@ -17,10 +17,10 @@
 ;=====================================
 (defvar *lastcsdfile* ())
 
-(om::defmethod! header  ((sr number)
-                         (kr number)
-                         (ksmps number)
-                         (nchnls number))
+(om::defmethod! header ((sr number)
+                        (kr number)
+                        (ksmps number)
+                        (nchnls number))
   :icon 162
   :indoc '("sample rate" "control rate" "sr/kr ratio" "number of channels")
   :initvals '(44100 441 100 2)
@@ -35,9 +35,9 @@
 
 ;---------------------------Value converters--------------------------------------
 
-(om::defmethod! convert-val ((mode symbol)(value t))
+(om::defmethod! convert-val ((mode symbol) (value t))
   :icon 130
-  :indoc '( "mode" "value" )
+  :indoc '("mode" "value")
   :initvals '(ampdb p4)
   :menuins '((0 (("ampdb" 'ampdb)
                  ("dbamp" 'dbamp)
@@ -59,7 +59,7 @@
 
 (om::defmethod! convert-pitch ((mode symbol)(value t))
   :icon 130
-  :indoc '("mode" "value" )
+  :indoc '("mode" "value")
   :initvals '(octpch p4)
   :menuins '((0 (("octpch" 'octpch)
                  ("pchoct" 'pchoct)
@@ -74,11 +74,11 @@
 
 ;----------------------VARIABLE DECLARATION---------------------------------------
 
-(om::defmethod! assign-val  ((name t)
-                             (mode symbol)
-                             (lst? t))
+(om::defmethod! assign-val ((name t)
+                            (mode symbol)
+                            (lst? t))
   :icon 156
-  :indoc '("variable" "symbol" "value" )
+  :indoc '("variable" "symbol" "value")
   :initvals '(idur = p3)
   :menuins '((1 (("=" '=)
                  ("init" 'init))))
@@ -147,7 +147,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 "
   (setf more (append (list ia idur1 ib) more))
   (let* ((state1
-          (om::x-append name"  " mode"  "
+          (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) more)))))
@@ -164,8 +164,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 
 
 
-(om::defmethod! oscil  ((name t) (mode symbol) (xamp t) (xcps t) (ifn t)
-                        &rest lst?)
+(om::defmethod! oscil ((name t) (mode symbol) (xamp t) (xcps t) (ifn t)
+                       &rest lst?)
   :icon 142
   :indoc '("name" "opcode" "amplitude" "frequency (Hz)" "table number" "optional")
   :initvals '(asig oscil 10000 440 1 nil)
@@ -195,7 +195,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   (setf lst? (append (list xamp xcps ifn) lst?))
   (let* (
          (state1
-          (om::x-append name"  " mode"  "
+          (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -213,7 +213,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                         (xcps t)
                         &rest lst?)
   :icon 164
-  :indoc '("name"  "frequency" "optional")
+  :indoc '("name" "frequency" "optional")
   :initvals '(k1 1 nil)
   :doc "Csound PHASOR opcode.
 
@@ -226,7 +226,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   (setf lst? (append (list xcps) lst?))
   (let* (
          (state1
-          (om::x-append name"  phasor  "
+          (om::x-append name "  phasor  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -262,7 +262,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   (setf lst? (append (list indx ifn) lst?))
   (let* (
          (state1
-          (om::x-append name"  " mode "  "
+          (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -296,7 +296,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   (setf lst? (append (list xamp) lst?))
   (let* (
          (state1
-          (om::x-append name"  " mode"  "
+          (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -322,7 +322,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                         (idec t)
                         &rest lst?)
   :icon 155
-  :indoc '("name" "opcode" "xamp" "irise" "idur" "idec" "optional" )
+  :indoc '("name" "opcode" "xamp" "irise" "idur" "idec" "optional")
   :initvals '(k1 linen 10000 0.5 p3 0.5 nil)
   :menuins '((1 (("linen" 'linen)
                  ("linenr" 'linenr)
@@ -339,7 +339,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   (setf lst? (append (list xamp irise idur idec) lst?))
   (let* (
          (state1
-          (om::x-append name"  " mode"  "
+          (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -374,7 +374,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   (setf lst? (append (list asig krvt) lst?))
   (let* (
          (state1
-          (om::x-append name"  " mode"  "
+          (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -390,12 +390,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 
 ;-------------------------------------filters-----------------------------------------------------------------------
 
-(om::defmethod! porta  ((name t)
-                        (mode symbol)
-
-                        &rest lst?)
+(om::defmethod! porta ((name t)
+                       (mode symbol)
+                       &rest lst?)
   :icon 160
-  :indoc '("name" "opcode" "argument" )
+  :indoc '("name" "opcode" "argument")
   :initvals '(nil porta nil)
   :menuins '((1 (("porta" 'porta)
                  ("tone" 'tone)
@@ -410,7 +409,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 "
 
   (let* ((state1
-          (om::x-append name"  " mode"  "
+          (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -423,11 +422,12 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                                                                                                      x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
-(om::defmethod! butterhp  ((name t)
-                           (mode symbol)
-                           (asig t)
-                           (kfreq t)
-                           &rest lst?)
+
+(om::defmethod! butterhp ((name t)
+                          (mode symbol)
+                          (asig t)
+                          (kfreq t)
+                          &rest lst?)
   :icon 160
   :indoc '("name" "opcode" "asig" "kfreq" "optional")
   :initvals '(ahpf butterhp asig 1000 nil)
@@ -444,7 +444,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   (setf lst? (append (list asig kfreq) lst?))
   (let* (
          (state1
-          (om::x-append name"  " mode"  "
+          (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -463,8 +463,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 ;=============================ARITHMETIC OPERATORS================================
 ;================================================================================
 
-
-(defmethod plus-bin  ((name1 t) (name2 t) (mode symbol))
+(defmethod plus-bin ((name1 t) (name2 t) (mode symbol))
   (let* ((strg (cond
                 ((eq mode 'norm) "~D+~D")
                 ((eq mode 'left) "(~D)+~D")
@@ -481,7 +480,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
          (enlev-dup (om::remove-dup liste 'equal 1)))
     (om::x-append tete enlev-dup)))
 
-(om::defmethod! plus  ((mode symbol) (name1 t) (name2 t) &rest additionnal)
+
+(om::defmethod! plus ((mode symbol) (name1 t) (name2 t) &rest additionnal)
   :icon 148
   :indoc '("addition mode" "name1" "name2" "add")
   :initvals '(norm nil nil nil)
@@ -500,7 +500,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
     rep))
 
 
-(defmethod minus-bin  ((name1 t) (name2 t) (mode symbol))
+(defmethod minus-bin ((name1 t) (name2 t) (mode symbol))
   (let* ((strg (cond
                 ((eq mode 'norm) "~D-~D")
                 ((eq mode 'left) "(~D)-~D")
@@ -517,7 +517,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
          (enlev-dup (om::remove-dup liste 'equal 1)))
     (om::x-append tete enlev-dup)))
 
-(om::defmethod! minus  ((mode symbol) (name1 t) (name2 t) &rest additionnal)
+
+(om::defmethod! minus ((mode symbol) (name1 t) (name2 t) &rest additionnal)
   :icon 146
   :indoc '("subtraction mode" "name1" "name2" "add")
   :initvals '(norm nil nil nil)
@@ -536,7 +537,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
     rep))
 
 
-(defmethod multiply-bin  ((name1 t) (name2 t) (mode symbol))
+(defmethod multiply-bin ((name1 t) (name2 t) (mode symbol))
   (let* ((strg (cond
                 ((eq mode 'norm) "~D*~D")
                 ((eq mode 'left) "(~D)*~D")
@@ -553,7 +554,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
          (enlev-dup (om::remove-dup liste 'equal 1)))
     (om::x-append tete enlev-dup)))
 
-(om::defmethod! multiply  ((mode symbol) (name1 t) (name2 t) &rest additionnal)
+
+(om::defmethod! multiply ((mode symbol) (name1 t) (name2 t) &rest additionnal)
   :icon 147
   :indoc '("multiplication mode" "name1" "name2" "add")
   :initvals '(norm nil nil nil)
@@ -572,7 +574,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
     rep))
 
 
-(defmethod divide-bin  ((name1 t) (name2 t) (mode symbol))
+(defmethod divide-bin ((name1 t) (name2 t) (mode symbol))
   (let* ((strg (cond
                 ((eq mode 'norm) "~D/~D")
                 ((eq mode 'left) "(~D)/~D")
@@ -588,6 +590,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                  (remove '() (if (listp name2) name2 nil))))
          (enlev-dup (om::remove-dup liste 'equal 1)))
     (om::x-append tete enlev-dup)))
+
 
 (om::defmethod! divide  ((mode symbol) (name1 t) (name2 t) &rest additionnal)
   :icon 145
@@ -613,12 +616,12 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 
 ;this one is to pass info from a statement to another
 
-(om::defmethod! statement  ((name t)
+(om::defmethod! statement ((name t)
                             (opcode t)
                             &rest lst?)
   :icon 161
-  :indoc '("name" "opcode" "argument" )
-  :initvals '( nil nil nil)
+  :indoc '("name" "opcode" "argument")
+  :initvals '(nil nil nil)
   :doc "A Csound statement.
 
 This box allows to add any possible statement in the Csound instrument.
@@ -629,7 +632,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 "
 
   (let* ((state1
-          (om::x-append name"  " opcode"  "
+          (om::x-append name "  " opcode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -648,9 +651,9 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 ;================================================================================
 
 
-(om::defmethod! soundin  ((name t)
-                          (ifilcod t)
-                          &rest lst?)
+(om::defmethod! soundin ((name t)
+                         (ifilcod t)
+                         &rest lst?)
   :icon 158
   :indoc '("name" "name sound" "optional")
   :initvals '(a1 soundin nil)
@@ -664,7 +667,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                              (format nil "~s" ifilcod)))
                      lst?))
   (let* ((state1
-          (om::x-append name"  "(format nil "    soundin ")
+          (om::x-append name "  " (format nil "    soundin ")
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
                                                                      (list x ","))) lst?)))))
@@ -691,7 +694,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
     (om::x-append ivar reste)))
 
 
-(om::defmethod! out  ((mode symbol) (asig t) &rest lst?)
+(om::defmethod! out ((mode symbol) (asig t) &rest lst?)
   :icon 152
   :indoc '("opcode" "asig" "optional")
   :initvals '(out a1 nil)
@@ -730,10 +733,10 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 
 ;====================================inst============================================
 
-(om::defmethod! inst  ((inst-num t)
-                       (vars t)
-                       (out t)
-                       &rest lst?)
+(om::defmethod! inst ((inst-num t)
+                      (vars t)
+                      (out t)
+                      &rest lst?)
   :icon 154
   :indoc '("instrument number" "assign-val" "out" "gvar")
   :initvals '(1 nil nil nil)
