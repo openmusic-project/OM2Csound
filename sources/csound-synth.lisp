@@ -15,7 +15,11 @@
              (outpath (if rt-out nil
                         (handle-new-file-exists
                          (corrige-sound-filename 
-                          (if out-name out-name (pathname-name sco)) *om-outfiles-folder*))))
+                          (if out-name out-name (string+ (pathname-name sco) 
+                                                         (case (get-pref (find-pref-module :audio) :audio-format)
+                                                           (:wav ".wav")
+                                                           (otherwise ".aiff"))))
+                          *om-outfiles-folder*))))
              (tmppath (unless rt-out
                         (handle-new-file-exists 
                          (om-make-pathname :directory outpath :name (pathname-name outpath) :type "tmp"))))
