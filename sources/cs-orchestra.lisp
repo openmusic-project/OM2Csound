@@ -193,19 +193,20 @@ OSCIL is part of the library of Csound OPCODES boxes used to design Csound instr
 See also http://www.csounds.com/manual/html/index.html for more info about Csound programming.
 "
   (setf lst? (append (list xamp xcps ifn) lst?))
-  (let* (
-         (state1
+  (let* ((state1
           (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
-                                                                   (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                   (if (listp x) 
+                                                                       (list (first (om::flat x)) ",")
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -224,19 +225,19 @@ PHASOR is part of the library of Csound OPCODES boxes used to design Csound inst
 See also http://www.csounds.com/manual/html/index.html for more info about Csound programming.
 "
   (setf lst? (append (list xcps) lst?))
-  (let* (
-         (state1
+  (let* ((state1
           (om::x-append name "  phasor  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ",")))
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -260,19 +261,19 @@ TABLEI is part of the library of Csound OPCODES boxes used to design Csound inst
 See also http://www.csounds.com/manual/html/index.html for more info about Csound programming.
 "
   (setf lst? (append (list indx ifn) lst?))
-  (let* (
-         (state1
+  (let* ((state1
           (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -294,19 +295,19 @@ RAND is part of the library of Csound OPCODES boxes used to design Csound instru
 See also http://www.csounds.com/manual/html/index.html for more info about Csound programming.
 "
   (setf lst? (append (list xamp) lst?))
-  (let* (
-         (state1
+  (let* ((state1
           (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -337,19 +338,19 @@ LINEN is part of the library of Csound OPCODES boxes used to design Csound instr
 See also http://www.csounds.com/manual/html/index.html for more info about Csound programming.
 "
   (setf lst? (append (list xamp irise idur idec) lst?))
-  (let* (
-         (state1
+  (let* ((state1
           (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -372,19 +373,19 @@ REVERB is part of the library of Csound OPCODES boxes used to design Csound inst
 See also http://www.csounds.com/manual/html/index.html for more info about Csound programming.
 "
   (setf lst? (append (list asig krvt) lst?))
-  (let* (
-         (state1
+  (let* ((state1
           (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -412,14 +413,15 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
           (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -442,19 +444,19 @@ BUTTERHP is part of the library of Csound OPCODES boxes used to design Csound in
 See also http://www.csounds.com/manual/html/index.html for more info about Csound programming.
 "
   (setf lst? (append (list asig kfreq) lst?))
-  (let* (
-         (state1
+  (let* ((state1
           (om::x-append name "  " mode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -635,14 +637,15 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
           (om::x-append name "  " opcode "  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil)) lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -670,14 +673,15 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
           (om::x-append name "  " (format nil "    soundin ")
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                     x nil))lst?)))))))
+         (output (append (list state1) 
+                         (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil))lst?)))))))
     (om::remove-dup output 'equal 1)))
 
 
@@ -719,14 +723,15 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
           (om::x-append "     "mode"  "
                         (let((input (butlast (om::flat (mapcar #'(lambda (x)
                                                                    (if (listp x) (list (first (om::flat x)) ",")
-                                                                     (list x ","))) lst?)))))
+                                                                     (list x ","))) 
+                                                               lst?)))))
                           (do ((n 0 (1+ n))
                                (lst '() (if (not (stringp (nth n input)))
                                             (push (nth n input) lst)
                                           (push (nth n input) lst))))
                               ((= n (length input)) (reverse lst))))))
-         (output0 (append (list state1) (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x)
-                                                                                                      x nil)) lst?))))))
+         (output0 (append (list state1) 
+                          (om::flat-once (reverse (remove '() (mapcar #'(lambda (x) (if (listp x) x nil)) lst?))))))
          (output1 (reverse (om::remove-dup output0 'equal 1))))
     (ivar-sort output1)))
 
