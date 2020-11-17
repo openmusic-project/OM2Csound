@@ -23,7 +23,7 @@
   (set-pref modulepref :csound-path path))
 
 
-(defun def-csound-options () '("-f -m7 -A -N -g -b8192 -B8192"))
+(defun def-csound-options () '("-f -m7 -N -g -b8192 -B8192"))
 
 (defmethod get-external-def-vals ((module (eql 'csound)))
   `(:csound-path ,(pathname "/usr/local/bin/csound")

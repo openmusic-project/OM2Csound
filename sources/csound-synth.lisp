@@ -12,13 +12,21 @@
   :icon '(410)
   (if (probe-file *CSOUND-PATH*)
       (let* ((rt-out (equal out-name :rt))
+
+             (wav-extensions '("wav" "wave")) (aif-extensions '("aiff" "aif"))
+             (valid-pathname-type (and out-name (pathname-type out-name)
+                                       (or (find (pathname-type out-name) wav-extensions :test #'string-equal)
+                                           (find (pathname-type out-name) aif-extensions :test #'string-equal))))
+
+             (format (cond ((and valid-pathname-type (find valid-pathname-type aif-extensions :test #'string-equal)) :aiff)
+                           ((and valid-pathname-type (find valid-pathname-type wav-extensions :test #'string-equal)) :wav)
+                           (t (get-pref (find-pref-module :audio) :audio-format))))
+
              (outpath (if rt-out nil
                         (handle-new-file-exists
                          (corrige-sound-filename
-                          (if out-name out-name (string+ (pathname-name sco)
-                                                         (case (get-pref (find-pref-module :audio) :audio-format)
-                                                           (:wav ".wav")
-                                                           (otherwise ".aiff"))))
+                          (if out-name out-name
+                            (string+ (pathname-name sco) (or valid-pathname-type (string-downcase format))))
                           *om-outfiles-folder*))))
              (tmppath (unless rt-out
                         (handle-new-file-exists
@@ -33,10 +41,11 @@
         (when (and (not rt-out) (probe-file outpath))
           (om-print (string+ "Removing existing file: " (namestring outpath)) "OM2Csound ::")
           (om-delete-file outpath))
-        (om-cmd-line 
-         (format nil "~s ~A ~s ~s ~A" 
+        (om-cmd-line
+         (format nil "~s ~A ~A ~s ~s ~A"
                  (namestring *CSOUND-PATH*)
                  *csound-defflags*
+                 (if (equal format :aiff) "-A" "-W")
                  (namestring orc)
                  (namestring sco)
                  (if rt-out "-odac"
