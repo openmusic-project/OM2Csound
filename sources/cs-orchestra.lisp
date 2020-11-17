@@ -38,20 +38,20 @@
 (om::defmethod! convert-val ((mode symbol)(value t))
   :icon 130
   :indoc '( "mode" "value" )
-  :initvals '('ampdb 'p4)
-  :menuins (list '(0 (("ampdb" 'ampdb)
-                      ("dbamp" 'dbamp)
-                      ("ftlen" 'ftlen)
-                      ("int" 'int)
-                      ("frac" 'frac)
-                      ("i" 'i)
-                      ("abs" 'abs)
-                      ("exp" 'exp)
-                      ("log" 'log)
-                      ("sqrt" 'sqrt)
-                      ("sin" 'sin)
-                      ("cos" 'cos)
-                      ("abs" 'abs))))
+  :initvals '(ampdb p4)
+  :menuins '((0 (("ampdb" 'ampdb)
+                 ("dbamp" 'dbamp)
+                 ("ftlen" 'ftlen)
+                 ("int" 'int)
+                 ("frac" 'frac)
+                 ("i" 'i)
+                 ("abs" 'abs)
+                 ("exp" 'exp)
+                 ("log" 'log)
+                 ("sqrt" 'sqrt)
+                 ("sin" 'sin)
+                 ("cos" 'cos)
+                 ("abs" 'abs))))
   :doc "Csound value converters."
   (let ((neu-val (if (listp value) (first value) value)))
     (format nil "~D(~D) " mode neu-val)))
@@ -60,13 +60,13 @@
 (om::defmethod! convert-pitch ((mode symbol)(value t))
   :icon 130
   :indoc '("mode" "value" )
-  :initvals '('octpch 'p4)
-  :menuins (list '(0 (("octpch" 'octpch)
-                      ("pchoct" 'pchoct)
-                      ("cpsch" 'cpsch)
-                      ("cpspch" 'cpspch)
-                      ("octcps" 'octcps)
-                      ("cpsoct" 'cpsoct))))
+  :initvals '(octpch p4)
+  :menuins '((0 (("octpch" 'octpch)
+                 ("pchoct" 'pchoct)
+                 ("cpsch" 'cpsch)
+                 ("cpspch" 'cpspch)
+                 ("octcps" 'octcps)
+                 ("cpsoct" 'cpsoct))))
   :doc "Csound pitch converters"
   (let ((neu-val (if (listp value) (first value) value)))
     (format nil "~D(~D) " mode neu-val)))
@@ -79,9 +79,9 @@
                              (lst? t))
   :icon 156
   :indoc '("variable" "symbol" "value" )
-  :initvals '( 'idur '= 'p3)
-  :menuins (list '(1 (("=" '=)
-                      ("init" 'init))))
+  :initvals '(idur = p3)
+  :menuins '((1 (("=" '=)
+                 ("init" 'init))))
   :doc "Csound variable declaration"
 
   (let* ((name1
@@ -119,11 +119,11 @@
 (om::defmethod! line-seg ((name t) (mode symbol) (ia t) (idur1 t) (ib t) &rest more)
   :icon 143
   :indoc '("name" "opcode" "init value" "duration" "end value" "optional arguments")
-  :initvals '( 'k1 'line 0 'p3 1 nil)
-  :menuins (list '(1 (("line" 'line)
-                      ("expon" 'expon)
-                      ("linseg" 'linseg)
-                      ("expseg" 'expseg))))
+  :initvals '(k1 line 0 p3 1 nil)
+  :menuins '((1 (("line" 'line)
+                 ("expon" 'expon)
+                 ("linseg" 'linseg)
+                 ("expseg" 'expseg))))
   :doc "Csound opcodes to generates a line or envelope.
 
 Generates a curve between two or more specified points.
@@ -168,12 +168,12 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                         &rest lst?)
   :icon 142
   :indoc '("name" "opcode" "amplitude" "frequency (Hz)" "table number" "optional")
-  :initvals '( 'asig 'oscil 10000 440 1 nil)
-  :menuins (list '(1 (("oscil" 'oscil)
-                      ("oscili" 'oscili)
-                      ("foscil" 'foscil)
-                      ("foscili" 'foscili)
-                      ("loscil" 'loscil))))
+  :initvals '(asig oscil 10000 440 1 nil)
+  :menuins '((1 (("oscil" 'oscil)
+                 ("oscili" 'oscili)
+                 ("foscil" 'foscil)
+                 ("foscili" 'foscili)
+                 ("loscil" 'loscil))))
   :doc "Csound oscillator opcodes.
 
 <mode> values:
@@ -214,7 +214,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                         &rest lst?)
   :icon 164
   :indoc '("name"  "frequency" "optional")
-  :initvals '( 'k1  1 nil)
+  :initvals '(k1 1 nil)
   :doc "Csound PHASOR opcode.
 
 Produces a normalized moving phase value.
@@ -247,12 +247,12 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                         &rest lst?)
   :icon 144
   :indoc '("name" "opcode" "indx" "ifn" "optional")
-  :initvals '( 'k1 'tablei nil 1 nil)
-  :menuins (list '(1 (("table" 'table)
-                      ("tablei" 'tablei)
-                      ("phasor" 'phasor)
-                      ("oscil1" 'oscil1)
-                      ("oscil1i" 'oscil1i))))
+  :initvals '(k1 tablei nil 1 nil)
+  :menuins '((1 (("table" 'table)
+                 ("tablei" 'tablei)
+                 ("phasor" 'phasor)
+                 ("oscil1" 'oscil1)
+                 ("oscil1i" 'oscil1i))))
   :doc "Csound table access opcodes.
 
 TABLEI is part of the library of Csound OPCODES boxes used to design Csound instruments.
@@ -283,10 +283,10 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                       &rest lst?)
   :icon 159
   :indoc '("name" "opcode" "amplitude" "optional")
-  :initvals '( 'k1 'rand 1 nil)
-  :menuins (list '(1 (("rand" 'rand)
-                      ("randh" 'randh)
-                      ("randi" 'randi))))
+  :initvals '(k1 rand 1 nil)
+  :menuins '((1 (("rand" 'rand)
+                 ("randh" 'randh)
+                 ("randi" 'randi))))
   :doc "Csound random generator access opcodes.
 
 RAND is part of the library of Csound OPCODES boxes used to design Csound instruments.
@@ -323,11 +323,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                         &rest lst?)
   :icon 155
   :indoc '("name" "opcode" "xamp" "irise" "idur" "idec" "optional" )
-  :initvals '('k1 'linen 10000 0.5 'p3 0.5 nil)
-  :menuins (list '(1 (("linen" 'linen)
-                      ("linenr" 'linenr)
-                      ("envlpx" 'envlpx)
-                      )))
+  :initvals '(k1 linen 10000 0.5 p3 0.5 nil)
+  :menuins '((1 (("linen" 'linen)
+                 ("linenr" 'linenr)
+                 ("envlpx" 'envlpx)
+                 )))
   :doc "Csound signal modification opcodes.
 
 Used to apply a straight line rise and decay patterns to an input amplitude signal.
@@ -360,11 +360,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                          &rest lst?)
   :icon 157
   :indoc '("name" "opcode" "asig" "krvt" "optional")
-  :initvals '( 'arevb 'reverb 'asig 5 nil)
-  :menuins (list '(1 (("reverb" 'reverb)
-                      ("reverb2" 'reverb2)
-                      ("comb" 'comb)
-                      ("alpass" 'alpass))))
+  :initvals '(arevb reverb asig 5 nil)
+  :menuins '((1 (("reverb" 'reverb)
+                 ("reverb2" 'reverb2)
+                 ("comb" 'comb)
+                 ("alpass" 'alpass))))
   :doc "Csound reverberation opcodes.
 
 REVERB is part of the library of Csound OPCODES boxes used to design Csound instruments.
@@ -396,12 +396,12 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                         &rest lst?)
   :icon 160
   :indoc '("name" "opcode" "argument" )
-  :initvals '( nil 'porta nil)
-  :menuins (list '(1 (("porta" 'porta)
-                      ("tone" 'tone)
-                      ("atone" 'atone)
-                      ("reson" 'reson)
-                      ("areson" 'areson))))
+  :initvals '(nil porta nil)
+  :menuins '((1 (("porta" 'porta)
+                 ("tone" 'tone)
+                 ("atone" 'atone)
+                 ("reson" 'reson)
+                 ("areson" 'areson))))
   :doc "Csound filter opcodes.
 
 PORTA is part of the library of Csound OPCODES boxes used to design Csound instruments.
@@ -430,11 +430,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
                            &rest lst?)
   :icon 160
   :indoc '("name" "opcode" "asig" "kfreq" "optional")
-  :initvals '( 'ahpf 'butterhp 'asig 1000 nil)
-  :menuins (list '(1 (("butterhp" 'butterhp)
-                      ("butterlp" 'butterlp)
-                      ("butterbp" 'butterbp)
-                      ("butterbr" 'butterbr))))
+  :initvals '(ahpf butterhp asig 1000 nil)
+  :menuins '((1 (("butterhp" 'butterhp)
+                 ("butterlp" 'butterlp)
+                 ("butterbp" 'butterbp)
+                 ("butterbr" 'butterbr))))
   :doc "Csound Butterworth filter opcodes.
 
 BUTTERHP is part of the library of Csound OPCODES boxes used to design Csound instruments.
@@ -484,8 +484,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 (om::defmethod! plus  ((mode symbol) (name1 t) (name2 t) &rest additionnal)
   :icon 148
   :indoc '("addition mode" "name1" "name2" "add")
-  :initvals '('norm nil nil nil)
-  :menuins (list '(0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
+  :initvals '(norm nil nil nil)
+  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
   :doc "Csound opcode to add two signals.
 
 Use left or right parenthesis (or none) depending on <mode> ['norm, 'left or 'right]
@@ -520,8 +520,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 (om::defmethod! minus  ((mode symbol) (name1 t) (name2 t) &rest additionnal)
   :icon 146
   :indoc '("subtraction mode" "name1" "name2" "add")
-  :initvals '('norm nil nil nil)
-  :menuins (list '(0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
+  :initvals '(norm nil nil nil)
+  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
   :doc "Csound opcode to minus two signals.
 
 Use left or right parenthesis (or none) depending on <mode> ['norm, 'left or 'right]
@@ -556,8 +556,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 (om::defmethod! multiply  ((mode symbol) (name1 t) (name2 t) &rest additionnal)
   :icon 147
   :indoc '("multiplication mode" "name1" "name2" "add")
-  :initvals '('norm nil nil nil)
-  :menuins (list '(0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
+  :initvals '(norm nil nil nil)
+  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
   :doc "Csound opcode to multiply two signals.
 
 Use left or right parenthesis (or none) depending on <mode> ['norm, 'left or 'right]
@@ -592,8 +592,8 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 (om::defmethod! divide  ((mode symbol) (name1 t) (name2 t) &rest additionnal)
   :icon 145
   :indoc '("division mode" "name1" "name2" "add")
-  :initvals '('norm nil nil nil)
-  :menuins (list '(0 (("Norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
+  :initvals '(norm nil nil nil)
+  :menuins '((0 (("Norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
   :doc "Csound opcode to divide two signals.
 
 Use left or right parenthesis (or none) depending on <mode> ['norm, 'left or 'right]
@@ -694,11 +694,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 (om::defmethod! out  ((mode symbol) (asig t) &rest lst?)
   :icon 152
   :indoc '("opcode" "asig" "optional")
-  :initvals '( 'out 'a1 nil)
-  :menuins (list '(0 (("out" 'out)
-                      ("outs" 'outs)
-                      ("outs1" 'outs1)
-                      ("outs2" 'outs2))))
+  :initvals '(out a1 nil)
+  :menuins '((0 (("out" 'out)
+                 ("outs" 'outs)
+                 ("outs1" 'outs1)
+                 ("outs2" 'outs2))))
   :doc "Csound opcode for instrument output.
 
 Outputs <asig> to
