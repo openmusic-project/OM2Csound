@@ -15,7 +15,6 @@
 (defvar *csound-defflags* "-f -m7 -N -g -b8192 -B8192")  ;; "-m7 -A -e -b8192 -B8192 -V50 -P128"
 
 (defmethod get-external-name ((module (eql 'csound))) "Csound")
-(defmethod get-external-icon ((module (eql 'csound))) (and (find-library "OM2Csound") (list 606 (find-library "OM2Csound"))))
 
 (defmethod get-external-module-vals ((module (eql 'csound)) modulepref) (get-pref modulepref :csound-options))
 (defmethod get-external-module-path ((module (eql 'csound)) modulepref) (get-pref modulepref :csound-path))
