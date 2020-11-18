@@ -465,11 +465,18 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 ;=============================ARITHMETIC OPERATORS================================
 ;================================================================================
 
+;;; correct a spelling error in the symbol name, 
+;;; for compatibility 
+(defun correct-mode-param (mode)
+  (if (equal mode 'rigth) 'right mode))
+
+
 (defmethod plus-bin ((name1 t) (name2 t) (mode symbol))
-  (let* ((strg (cond
+  (let* ((mode (correct-mode-param mode))
+         (strg (cond
                 ((eq mode 'norm) "~D+~D")
                 ((eq mode 'left) "(~D)+~D")
-                ((eq mode 'rigth) "~D+(~D)")))
+                ((eq mode 'right) "~D+(~D)")))
          (tete (format nil strg (if (listp name1)
                                     (first (om::flat name1))
                                   name1)
@@ -487,7 +494,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   :icon 148
   :indoc '("addition mode" "name1" "name2" "add")
   :initvals '(norm nil nil nil)
-  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
+  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("right-part" 'right))))
   :doc "Csound opcode to add two signals.
 
 Use left or right parenthesis (or none) depending on <mode> ['norm, 'left or 'right]
@@ -503,10 +510,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 
 
 (defmethod minus-bin ((name1 t) (name2 t) (mode symbol))
-  (let* ((strg (cond
+  (let* ((mode (correct-mode-param mode))
+         (strg (cond
                 ((eq mode 'norm) "~D-~D")
                 ((eq mode 'left) "(~D)-~D")
-                ((eq mode 'rigth) "~D-(~D)")))
+                ((eq mode 'right) "~D-(~D)")))
          (tete (format nil strg (if (listp name1)
                                     (first (om::flat name1))
                                   name1)
@@ -524,7 +532,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   :icon 146
   :indoc '("subtraction mode" "name1" "name2" "add")
   :initvals '(norm nil nil nil)
-  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
+  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("right-part" 'right))))
   :doc "Csound opcode to minus two signals.
 
 Use left or right parenthesis (or none) depending on <mode> ['norm, 'left or 'right]
@@ -540,10 +548,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 
 
 (defmethod multiply-bin ((name1 t) (name2 t) (mode symbol))
-  (let* ((strg (cond
+  (let* ((mode (correct-mode-param mode))
+         (strg (cond
                 ((eq mode 'norm) "~D*~D")
                 ((eq mode 'left) "(~D)*~D")
-                ((eq mode 'rigth) "~D*(~D)")))
+                ((eq mode 'right) "~D*(~D)")))
          (tete (format nil strg (if (listp name1)
                                     (first (om::flat name1))
                                   name1)
@@ -561,7 +570,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   :icon 147
   :indoc '("multiplication mode" "name1" "name2" "add")
   :initvals '(norm nil nil nil)
-  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
+  :menuins '((0 (("norm" 'norm) ("left-part" 'left) ("right-part" 'right))))
   :doc "Csound opcode to multiply two signals.
 
 Use left or right parenthesis (or none) depending on <mode> ['norm, 'left or 'right]
@@ -577,10 +586,11 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
 
 
 (defmethod divide-bin ((name1 t) (name2 t) (mode symbol))
-  (let* ((strg (cond
+  (let* ((mode (correct-mode-param mode))
+         (strg (cond
                 ((eq mode 'norm) "~D/~D")
                 ((eq mode 'left) "(~D)/~D")
-                ((eq mode 'rigth) "~D/(~D)")))
+                ((eq mode 'right) "~D/(~D)")))
          (tete (format nil strg (if (listp name1)
                                     (first (om::flat name1))
                                   name1)
@@ -598,7 +608,7 @@ See also http://www.csounds.com/manual/html/index.html for more info about Csoun
   :icon 145
   :indoc '("division mode" "name1" "name2" "add")
   :initvals '(norm nil nil nil)
-  :menuins '((0 (("Norm" 'norm) ("left-part" 'left) ("rigth-part" 'rigth))))
+  :menuins '((0 (("Norm" 'norm) ("left-part" 'left) ("right-part" 'right))))
   :doc "Csound opcode to divide two signals.
 
 Use left or right parenthesis (or none) depending on <mode> ['norm, 'left or 'right]
