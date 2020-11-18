@@ -9,12 +9,8 @@
 ; Mikhail Malt, Carlos Agon, Jean Bresson 
 ; (c) IRCAM 1993-2020
 ;===================================================
-; 
 ; Loader file for om#
-;
 ;===================================================
-
-(in-package :om)
 
 
 (:om-lib 
@@ -27,9 +23,6 @@
   ;"sources/cs-orchestra"  
   ;"sources/orc-editor" 
   "sources/utils" 
-  ;"sources/csound-synth"
-  ;"sources/csound-normalize"
-  ;"sources/csound-preferences"
   )
  (:symbols
   (:packages 
@@ -51,9 +44,6 @@
   ; (:package 
   ;  (:name "write")
   ;  (:functions "write-csound-orc" "header"))
-  ; (:package 
-  ;  (:name "Synthesize")
-  ;  (:functions "csound-synth" "csound-normalize"))
   ; (:package 
   ;  (:name "opcodes")
   ;  (:functions "oscil" "line-seg" "linen" "phasor"))
