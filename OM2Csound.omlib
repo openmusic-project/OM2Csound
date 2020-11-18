@@ -20,8 +20,7 @@
  (:source-files 
   "sources/cs-score-processing" 
   "sources/cs-score" 
-  ;"sources/cs-orchestra"  
-  ;"sources/orc-editor" 
+  "sources/cs-orchestra"  
   "sources/utils" 
   )
  (:symbols
@@ -32,21 +31,21 @@
    (:package 
     (:name "score")
     (:functions "table" "i-statements" "make-obj-snd" "write-csound-score" "change-col-in-file"))
-  ; (:package 
-  ;  (:name "instts")
-  ;  (:functions "inst" "out" "assign-val"))
-  ; (:package 
-  ;  (:name "converters")
-  ;  (:functions "convert-pitch" "convert-val"))
-  ; (:package 
-  ;  (:name "operators")
-  ;  (:functions "plus" "minus" "multiply" "divide"))
-  ; (:package 
-  ;  (:name "write")
-  ;  (:functions "write-csound-orc" "header"))
-  ; (:package 
-  ;  (:name "opcodes")
-  ;  (:functions "oscil" "line-seg" "linen" "phasor"))
+   (:package 
+    (:name "instts")
+    (:functions "inst" "out" "assign-val"))
+   (:package 
+    (:name "converters")
+    (:functions "convert-pitch" "convert-val"))
+   (:package 
+    (:name "operators")
+    (:functions "plus" "minus" "multiply" "divide"))
+   (:package 
+    (:name "write")
+    (:functions "write-csound-orc" "header"))
+   (:package 
+    (:name "opcodes")
+    (:functions "oscil" "line-seg" "linen" "phasor"))
    ))
  )
 
