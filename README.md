@@ -1,6 +1,6 @@
 # OM2Csound
 
-Control and of Csound audio processing and synthesis in OpenMusic
+Csound audio processing and synthesis in OpenMusic
 
 The OM2Csound library is inially an adaptation of the **Csound/Edit-sco** library for PatchWork, by Laurent Pottier and Mikhaïl Malt.
 
