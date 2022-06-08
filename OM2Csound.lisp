@@ -5,9 +5,9 @@
 ;;; see www.csounds.com
 ;;;
 ;;; LIBRARY MAIN FILE
-;;; Authors/Contributors: Laurent Pottier, Karim Haddad, Mikhail Malt,
-;;; Carlos Agon, Jean Bresson
-;;; (c) IRCAM 1993-2010
+;;; Authors/Contributors: Laurent Pottier, Mikhail Malt,
+;;; Carlos Agon, Jean Bresson, Karim Haddad
+;;; (c) IRCAM 1993-2022
 ;;;===================================================
 
 
@@ -22,6 +22,7 @@
                                "utils"
                                "csound-synth"
                                "csound-normalize"
+                               "csound-utilities"
                                "csound-preferences"))
 
 (mapc #'(lambda (file) (compile&load (om-relative-path '("sources") file))) *Csound-files*)
@@ -36,6 +37,7 @@
                   ("converters" nil nil (convert-pitch convert-val) nil)
                   ("signal operators" nil nil (plus minus multiply divide) nil))
                  nil (write-csound-orc header) nil)
+                ("Sound Utilities" nil nil (csound-split csound-merge) nil)
                 ("Synthesize" nil nil (csound-synth csound-normalize) nil))
               )
 
@@ -55,7 +57,7 @@ Csound can also be selected as a sound normalizer in OM sound processing (see Pr
 
 
 (when (fboundp 'om::set-lib-release) 
-  (set-lib-release 2.4))
+  (set-lib-release 2.5))
 
 
 (print "
@@ -64,6 +66,6 @@ Csound can also be selected as a sound normalizer in OM sound processing (see Pr
  Control of Csound in OpenMusic
  see www.csounds.com
  L. Pottier, K. Haddad, M. Malt, C. Agon, J. Bresson
- IRCAM 1993-2020
+ IRCAM 1993-2022
 =======================================
 ")
