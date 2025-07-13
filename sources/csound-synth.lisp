@@ -14,10 +14,10 @@
       (let* ((rt-out (equal out-name :rt))
 
              (wav-extensions '("wav" "wave")) (aif-extensions '("aiff" "aif"))
-             (valid-pathname-type (and out-name (pathname-type out-name)
-                                       (or (find (pathname-type out-name) wav-extensions :test #'string-equal)
-                                           (find (pathname-type out-name) aif-extensions :test #'string-equal))))
-
+             (valid-pathname-type (unless rt-out (and out-name (pathname-type out-name)
+                                                      (or (find (pathname-type out-name) wav-extensions :test #'string-equal)
+                                                          (find (pathname-type out-name) aif-extensions :test #'string-equal)))))
+             
              (format (cond ((and valid-pathname-type (find valid-pathname-type aif-extensions :test #'string-equal)) :aiff)
                            ((and valid-pathname-type (find valid-pathname-type wav-extensions :test #'string-equal)) :wav)
                            (t (get-pref (find-pref-module :audio) :audio-format))))
