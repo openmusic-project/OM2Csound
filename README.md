@@ -16,4 +16,4 @@ Find more information about Csound on www.csounds.com.
 
 The OM2Csound library was conceived and programmed by Karim Haddad, Mikhail Malt, Laurent Pottier, Jean Bresson.
 
-A manual for OM2Csound was published in 1999 by Ircam: http://support.ircam.fr/docs/om-libraries/old/
+A manual for OM2Csound was published in 1999 by Ircam: https://openmusic-project.github.io/openmusic/doc/om-libraries/Om2Csound-1-Doc.pdf
